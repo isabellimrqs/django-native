@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 
 @api_view(['GET', 'POST'])
 def listar_clientes(request):
@@ -21,10 +22,12 @@ def listar_clientes(request):
             return Response (serializer.errors,status=status.HTTP_400_BAD_REQUEST) 
 
 class ClientesView(ListCreateAPIView):
+    permission_classes = (IsAuthenticated)
     queryset = Cliente.objects.all()
     serializer_class = ClienteSerializer
 
 class ClientesDetailView(RetrieveUpdateDestroyAPIView):
+    permission_classes = (IsAuthenticated)
     queryset = Cliente.objects.all()
     serializer_class = ClienteSerializer
 
