@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react-native-geolocation-service": "^5.3.1"
+  },
+  "packageManager": "yarn@3.6.4"
+}
